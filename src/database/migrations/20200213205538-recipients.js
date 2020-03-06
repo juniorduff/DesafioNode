@@ -22,7 +22,7 @@ module.exports = {
         unique: true,
       },
       complement: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
         unique: true,
       },
@@ -36,7 +36,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      zipCode: {
+      zipcode: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,

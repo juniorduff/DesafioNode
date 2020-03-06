@@ -9,7 +9,7 @@ class RecipientsController {
       complement: Yup.string().required(),
       city: Yup.string().required(),
       state: Yup.string().required(),
-      zipCode: Yup.string()
+      zipcode: Yup.string()
         .required()
         .min(6),
     });
@@ -22,7 +22,7 @@ class RecipientsController {
       city,
       complement,
       state,
-      zipCode,
+      zipcode,
     } = await recepients.create(req.body);
 
     return res.json({
@@ -31,7 +31,7 @@ class RecipientsController {
       city,
       complement,
       state,
-      zipCode,
+      zipcode,
     });
     /*
       const schema = Yup.object().shape({
@@ -82,7 +82,7 @@ class RecipientsController {
       complement: Yup.string(),
       city: Yup.string(),
       state: Yup.string(),
-      zipCode: Yup.string().required(),
+      zipcode: Yup.string().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -109,7 +109,7 @@ class RecipientsController {
       complement,
       provider,
       state,
-      zipCode,
+      zipcode,
     } = await recepients.update(req.body);
     // RETORNA NA TELA OS DADOS DO USUARIO
     return res.json({
@@ -118,7 +118,7 @@ class RecipientsController {
       city,
       complement,
       state,
-      zipCode,
+      zipcode,
       provider,
     });
   }
