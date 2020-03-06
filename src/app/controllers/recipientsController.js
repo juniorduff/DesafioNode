@@ -1,7 +1,5 @@
 import * as Yup from 'yup';
-import User from '../models/User';
-
-// import destinatario from '../models/recipients';
+import recepients from '../models/recipients';
 
 class RecipientsController {
   async store(req, res) {
@@ -13,7 +11,38 @@ class RecipientsController {
       state: Yup.string().required(),
       zipCode: Yup.string()
         .required()
-        .min(8),
+        .min(6),
+    });
+    if (!(await schema.isValid(req.body)))
+      return res.status(400).json({ error: 'validation fails' });
+
+    const {
+      id,
+      number,
+      city,
+      complement,
+      state,
+      zipCode,
+    } = await recepients.create(req.body);
+
+    return res.json({
+      id,
+      number,
+      city,
+      complement,
+      state,
+      zipCode,
+    });
+    /*
+      const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      number: Yup.number().required(),
+      complement: Yup.string().required(),
+      city: Yup.string().required(),
+      state: Yup.string().required(),
+      zipCode: Yup.string()
+        .required()
+        .min(6),
     });
 
     if (!(await schema.isValid(req.body)))
@@ -31,8 +60,9 @@ class RecipientsController {
       provider,
       state,
       zipCode,
-    } = await User.create(req.body);
+    } = await recepients.create(req.body);
     // RETORNA NA TELA OS DADOS DO USUARIO
+
     return res.json({
       id,
       number,
@@ -42,6 +72,7 @@ class RecipientsController {
       zipCode,
       provider,
     });
+  */
   }
 
   async update(req, res) {
@@ -51,9 +82,7 @@ class RecipientsController {
       complement: Yup.string(),
       city: Yup.string(),
       state: Yup.string(),
-      zipCode: Yup.string()
-        .required()
-        .min(8),
+      zipCode: Yup.string().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -81,7 +110,7 @@ class RecipientsController {
       provider,
       state,
       zipCode,
-    } = await User.update(req.body);
+    } = await recepients.update(req.body);
     // RETORNA NA TELA OS DADOS DO USUARIO
     return res.json({
       id,

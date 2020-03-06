@@ -5,7 +5,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
+        primaryKey: true,
       },
       name: {
         type: Sequelize.STRING,
@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      complemento: {
+      complement: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
@@ -40,11 +40,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
-      },
-      provider: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
